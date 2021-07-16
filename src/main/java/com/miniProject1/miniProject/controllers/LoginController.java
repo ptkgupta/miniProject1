@@ -1,6 +1,8 @@
 package com.miniProject1.miniProject.controllers;
 
 
+//import com.miniProject1.miniProject.objects.userObject;
+import com.miniProject1.miniProject.objects.userObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +14,7 @@ import java.lang.String;
 @Controller
 public class LoginController {
 
+
     @ResponseBody
     @RequestMapping("/login")
     public String loginMessage(){
@@ -20,9 +23,8 @@ public class LoginController {
 
     @ResponseBody
     @RequestMapping("/newUser")
-    public String userCreator(@RequestParam(required = true) String name, @RequestParam(required= true) String password, ModelMap model){
-        System.out.println(name);
-        System.out.println(password);
-        return ("User Created"+name+"and"+password);
+    public userObj userCreator(@RequestParam(required = true) String name, @RequestParam(required= true) String password, ModelMap model){
+        userObj user = new userObj(name,password);
+        return (user);
     }
 }
