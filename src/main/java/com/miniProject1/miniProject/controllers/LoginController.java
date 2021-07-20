@@ -2,8 +2,7 @@ package com.miniProject1.miniProject.controllers;
 
 
 //import com.miniProject1.miniProject.objects.userObject;
-import com.miniProject1.miniProject.objects.userObj;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.miniProject1.miniProject.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +22,9 @@ public class LoginController {
 
     @ResponseBody
     @RequestMapping("/newUser")
-    public userObj userCreator(@RequestParam(required = true) String name, @RequestParam(required= true) String password, ModelMap model){
-        userObj user = new userObj(name,password);
-        return (user);
+    public User loginMessage(@RequestParam(required = true) String name, @RequestParam(required = true) String password)
+    {
+        User newUser = new User(name,password);
+        return newUser;
     }
 }
