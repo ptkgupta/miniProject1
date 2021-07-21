@@ -12,8 +12,5 @@ public class todoController {
     @Autowired
     private todoService todoService;
 
-    @ResponseBody
-    @GetMapping('/newTodo')
-    public String
 
 }
