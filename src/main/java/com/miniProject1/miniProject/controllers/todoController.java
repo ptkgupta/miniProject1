@@ -9,8 +9,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class todoController {
 
-    @Autowired
-    private todoService todoService;
-
 
 }
