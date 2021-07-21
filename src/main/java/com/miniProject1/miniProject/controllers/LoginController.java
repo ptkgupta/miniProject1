@@ -2,7 +2,9 @@ package com.miniProject1.miniProject.controllers;
 
 
 //import com.miniProject1.miniProject.objects.userObject;
-import com.miniProject1.miniProject.objects.userObj;
+import com.miniProject1.miniProject.entities.User;
+import com.miniProject1.miniProject.repositories.UserRepository;
+import com.miniProject1.miniProject.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +16,8 @@ import java.lang.String;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private userService service;
 
     @ResponseBody
     @RequestMapping("/login")
@@ -21,10 +25,35 @@ public class LoginController {
         return "This is the login page where you can either register or you can login.";
     }
 
+    @RequestMapping("/userlogin")
+    @ResponseBody
+    public String userLogin(@RequestParam(required=true) String name, @RequestParam(required = true) String password){
+        User loginUser = new User(name,password);
+        boolean clear = service.validate(loginUser);
+        if(clear)
+            return("valid user");
+        else
+            return("invalid user");
+    }
+
     @ResponseBody
     @RequestMapping("/newUser")
-    public userObj userCreator(@RequestParam(required = true) String name, @RequestParam(required= true) String password, ModelMap model){
-        userObj user = new userObj(name,password);
-        return (user);
+    public String newUSer(@RequestParam(required = true) String name, @RequestParam(required = true) String password)
+    {
+        User newUser = new User(name,password);
+        boolean inserted = service.insert(newUser);
+        if (inserted) return ("New user has been created as follows \n"+newUser.toString());
+        else return("User already exists");
     }
+
+    @ResponseBody
+    @RequestMapping("/deleteUser")
+    public String deleteUSer(@RequestParam(required = true) String name, @RequestParam(required = true) String password)
+    {
+        User newUser = new User(name,password);
+        boolean deleted = service.delete(newUser);
+        if (deleted) return ("user has been deleted");
+        else return("User does not exist");
+    }
+
 }
