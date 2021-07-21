@@ -10,17 +10,18 @@ import java.util.UUID;
 
 @Entity
 public class User {
+    @Id
     public String name;
     private String password;
-    @Id
-    @GeneratedValue
     private UUID userId;
 
-    protected  User(){}
+
+    public User(){}
     public User(String name, String password) {
         super();
         this.name = name;
         this.password = password;
+        this.userId = UUID.randomUUID();
     }
 
     public UUID getUserId() {
@@ -29,6 +30,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
