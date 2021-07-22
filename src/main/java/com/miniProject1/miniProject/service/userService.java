@@ -28,14 +28,6 @@ public class userService {
         else return false;
     }
 
-    public User retrieveUser(String name){
-        return repo.getOne(name);
-    }
-
-    public void update(User user){
-        repo.saveAndFlush(user);
-    }
-
     public boolean validate(User user){
         boolean present = repo.existsById(user.name);
         if (present) {

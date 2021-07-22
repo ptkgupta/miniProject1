@@ -13,6 +13,7 @@ public class User {
     @Id
     public String name;
     private String password;
+    private UUID userId;
 
 
     public User(){}
@@ -20,8 +21,12 @@ public class User {
         super();
         this.name = name;
         this.password = password;
+        this.userId = UUID.randomUUID();
     }
 
+    public UUID getUserId() {
+        return userId;
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -36,6 +41,7 @@ public class User {
         return "User{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", userId=" + userId +
                 '}';
     }
 }

@@ -56,17 +56,4 @@ public class LoginController {
         else return("User does not exist");
     }
 
-    @ResponseBody
-    @RequestMapping("/changePassword")
-    public String changePassword(@RequestParam(required = true) String name, @RequestParam(required = true) String oldPassword,@RequestParam(required = true) String newPassword1, @RequestParam(required = true) String newPassword2)
-    {
-        User user = new User(name,oldPassword);
-        if(!service.validate(user)) return("Invalid password");
-        if(!newPassword1.equals(newPassword2)) return("The passwords don't match.");
-
-        User user_old = service.retrieveUser(name);
-        user_old.setPassword(newPassword1);
-        service.update(user_old);
-        return("User updated");
-    }
 }
