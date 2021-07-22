@@ -1,0 +1,6 @@
+This is the file where Prateek and Jaskaran make notes for each other to keep in mind while writing the code
+
+Currently added compatible requests: (All requests so far are get requests)
+1) (\login) Simply returs the a string for a wellcome page
+2) (\newUser) 
+	: Inputs: 1) Name (String, required field), 2) password (String Required field)
