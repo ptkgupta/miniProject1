@@ -20,12 +20,12 @@ public class LoginController {
     private userService service;
 
     @ResponseBody
-    @RequestMapping("/login")
+    @RequestMapping("/")
     public String loginMessage(){
         return "This is the login page where you can either register or you can login.";
     }
 
-    @RequestMapping("/userlogin")
+    @RequestMapping("/login")
     @ResponseBody
     public String userLogin(@RequestParam(required=true) String name, @RequestParam(required = true) String password){
         User loginUser = new User(name,password);
@@ -47,7 +47,7 @@ public class LoginController {
     }
 
     @ResponseBody
-    @RequestMapping("/deleteUser")
+    @RequestMapping("/login/deleteUser")
     public String deleteUSer(@RequestParam(required = true) String name, @RequestParam(required = true) String password)
     {
         User newUser = new User(name,password);
@@ -55,5 +55,4 @@ public class LoginController {
         if (deleted) return ("user has been deleted");
         else return("User does not exist");
     }
-
 }
