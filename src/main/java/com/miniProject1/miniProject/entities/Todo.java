@@ -1,72 +1,82 @@
 package com.miniProject1.miniProject.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.UUID;
 
 @Entity
 public class Todo {
+
     @Id
-    private UUID todo_ID;
-    public String text;
-    public Date deadline;
+    private UUID todoId;
     public String title;
-    public String userName;
+    public String desc;
+    public String author;
+    public LocalDate dueDate;
+    public UUID parentID;
+    public boolean completed;
+    public boolean archived;
 
-    protected Todo(){}
-    public Todo(String text, Date deadline, String title, String userName) {
-        super();
-        this.text = text;
-        this.deadline = deadline;
+    public Todo(){}
+
+    public Todo(String title, String desc, String author, LocalDate dueDate, boolean completed, boolean archived) {
         this.title = title;
-        this.userName = userName;
+        this.desc = desc;
+        this.todoId = UUID.randomUUID();
+        this.author = author;
+        this.dueDate = dueDate;
+        this.parentID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        this.completed = completed;
+        this.archived = archived;
+
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public Todo(String Name) {
+        this.title = "Title";
+        this.desc = "Description";
+        this.todoId = UUID.randomUUID();
+        this.author = Name;
+        this.dueDate = LocalDate.of(2018, Month.OCTOBER, 12);
+        this.completed = false;
+        this.archived = false;
+        this.parentID = UUID.fromString("00000000-0000-0000-0000-000000000000");
     }
 
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+    public Todo(String Name, UUID id) {
+        this.title = "Title";
+        this.desc = "Description";
+        this.todoId = UUID.randomUUID();
+        this.author = Name;
+        this.dueDate = LocalDate.of(2018, Month.OCTOBER, 12);
+        this.completed = false;
+        this.archived = false;
+        this.parentID = id;
+
     }
 
+    public UUID getTodoId() {
+        return todoId;
+    }
+
+    public void changeStatus(){
+        this.completed = !this.completed;
+    }
+
+    public void changeArchive(){
+        this.archived = !this.archived;
+    }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public UUID getTodo_ID() {
-        return todo_ID;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public Date getDeadline() {
-        return deadline;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    @Override
-    public String toString() {
-        return "Todo{" +
-                "todo_ID=" + todo_ID +
-                ", text='" + text + '\'' +
-                ", deadline=" + deadline +
-                ", title='" + title + '\'' +
-                ", userName='" + userName + '\'' +
-                '}';
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
     }
 }
