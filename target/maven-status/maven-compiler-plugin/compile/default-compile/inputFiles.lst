@@ -1,0 +1,10 @@
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/repositories/TodoRepository.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/service/userService.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/entities/Todo.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/controllers/todoController.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/service/todoService.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/security/securityConfiguration.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/entities/User.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/controllers/LoginController.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/MiniProjectApplication.java
+/home/admins/projects/miniProject1/miniProject1-Backend/src/main/java/com/miniProject1/miniProject/repositories/UserRepository.java
